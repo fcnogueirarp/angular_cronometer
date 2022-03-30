@@ -4,5 +4,5 @@
     <button (click)="config = false">Cronômetro</button>
   </div>
   <app-config *ngIf="config" [exercises]="exercises">Configurações</app-config>
-  <app-timer *ngIf="!config" [exercises]="exercises">Cronômetro</app-timer>
+  <app-timer>Cronômetro</app-timer>
 </div>
