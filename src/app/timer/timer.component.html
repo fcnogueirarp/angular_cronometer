@@ -1,0 +1,23 @@
+<div [class]="'phase' + phase">
+  <div class="timeLeft">{{ timeLeft / 10 | number: "1.1-1" }}</div>
+  <div>
+    <div>
+      Exercício {{ currentEx + 1 }}/{{ this.exercises.length }}:
+      {{ this.exercises[this.currentEx].name }},
+    </div>
+    <div>
+      Repetição {{ currentRep + 1 }}/{{
+        this.exercises[this.currentEx].repetitions
+      }}
+    </div>
+  </div>
+  <div>
+    {{ formatPhase(phase) }}
+  </div>
+</div>
+<div class="tools">
+  <button (click)="start()">start</button>
+  <button (click)="pause()">Pause</button>
+  <button (click)="restart()">Reiniciar</button>
+  <button (click)="next()">Próximo</button>
+</div>
