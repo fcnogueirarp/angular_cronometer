@@ -1,5 +1,5 @@
 <div [class]="'phase' + ts.phase">
-  <div class="timeLeft">{{ ts.timeLeft / 10 | number: "1.1-1" }}</div>
+  <div class="timeLeft">{{ ts.timeLeft / 1000 | number: "1.1-1" }}</div>
   <div>
     <div>
       Exercício {{ ts.currentEx + 1 }}/{{ this.ts.exercises.length }}:

@@ -48,23 +48,30 @@ export class TimerService {
     this.timeLeft = this.getTimeOfCurrentPhase();
   }
 
-  decrementTimeLeft() {
-    if (this.timeLeft > 0) {
-      this.timeLeft--;
-    } else {
+  decrementTimeLeft(ellapsedTimeMs: any) {
+    if (ellapsedTimeMs >= this.timeLeft) {
       this.next();
+    } else {
+      this.timeLeft = this.timeLeft - ellapsedTimeMs;
     }
   }
   private getTimeOfCurrentPhase() {
     const ex = this.exercises[this.currentEx];
     switch (this.phase) {
       case 0:
-        return ex.preparation * 10;
+        return ex.preparation * 1000;
       case 1:
-        return ex.duration * 10;
+        return ex.duration * 1000;
       case 2:
-        return ex.rest * 10;
+        return ex.rest * 1000;
     }
     return 0;
+  }
+  add(exercise: Exercise) {
+    this.exercises.push(exercise);
+  }
+
+  remove(i: number) {
+    this.exercises.splice(i, 1);
   }
 }

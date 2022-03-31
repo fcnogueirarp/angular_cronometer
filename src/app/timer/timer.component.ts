@@ -40,8 +40,12 @@ export class TimerComponent implements OnInit {
 
   start() {
     if (!this.interval) {
-      this.interval = setInterval(() => {
-        this.ts.decrementTimeLeft();
+      let lastTime = Date.now();
+      this.interval = window.setInterval(() => {
+        let currentTime = Date.now();
+        let ellapsedTime = currentTime - lastTime;
+        lastTime = currentTime;
+        this.ts.decrementTimeLeft(ellapsedTime);
       }, 100);
     }
   }
